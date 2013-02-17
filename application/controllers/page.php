@@ -6,6 +6,8 @@
  * @property CI_Email $email
  * @property CI_DB_active_record $db
  * @property CI_DB_forge $dbforge
+ * @property cms_model $cms_model
+ * @property page_model $page_model
  */
 class Page extends CI_Controller{
 

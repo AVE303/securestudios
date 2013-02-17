@@ -8,7 +8,8 @@
  * @property CI_DB_forge $dbforge
  * @property CI_Table $table
  * @property CI_Session $session
- * @property CI_FTP $ftp 
+ * @property CI_FTP $ftp
+ * @property cms_model $cms_model
  * @todo Form validation callbacks for duplicate film-projects
  */
 class Cms extends CI_Controller {
