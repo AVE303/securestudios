@@ -1,0 +1,172 @@
+html,body {
+	margin:0;
+	padding:0;
+	height:100%; /* needed for container min-height */
+/*	background:gray;*/
+
+	font-family:arial,sans-serif;
+	font-size:small;
+	color:#666;
+}
+a{
+  color: gray;
+  text-decoration: none;
+}
+div#wrapper{
+  position:relative; /* needed for footer positioning*/
+  margin:0 auto; /* center, not in IE5 */
+  width:750px;
+  background:#f0f0f0;
+  -webkit-box-shadow: 4px 2px  #454546,  -4px 0 2px #454546;
+  -moz-box-shadow: 4px 0 2px #454546,  -4px 0 2px #454546;
+  box-shadow: 4px 0 2px #454546,  -4px 0 2px #454546;
+
+
+  height:auto !important; /* real browsers */
+  height:100%; /* IE6: treaded as min-height*/
+
+  min-height:100%; /* real browsers */
+}
+
+div#header {
+/*  padding:1em;*/
+  background-image: linear-gradient(bottom, rgb(163,163,163) 34%, rgb(133,133,133) 67%, rgb(99,99,99) 84%);
+  background-image: -o-linear-gradient(bottom, rgb(163,163,163) 34%, rgb(133,133,133) 67%, rgb(99,99,99) 84%);
+  background-image: -moz-linear-gradient(bottom, rgb(163,163,163) 34%, rgb(133,133,133) 67%, rgb(99,99,99) 84%);
+  background-image: -webkit-linear-gradient(bottom, rgb(163,163,163) 34%, rgb(133,133,133) 67%, rgb(99,99,99) 84%);
+  background-image: -ms-linear-gradient(bottom, rgb(163,163,163) 34%, rgb(133,133,133) 67%, rgb(99,99,99) 84%);
+/*  border-bottom:6px double gray;*/
+}
+  div#header p {
+          font-style:italic;
+          font-size:1.1em;
+          margin:0;
+  }
+  
+div#content {
+	padding:1em 1em 5em; /* bottom padding for footer */
+}
+  div#content p {
+          text-align:justify;
+          padding:0 1em;
+  }
+  div#content thead{
+    background: grey;
+    color: white;
+    font-weight: bold;
+  }
+  div#content table.list{
+    background: papayawhip;
+    padding: 5px;
+  }
+  div#content table.list tr{
+    border-bottom: 1px solid white;
+  }
+  div.message{
+    color: white;
+    font-weight: bold;
+    
+    margin: 10px 0;
+    background-color: #B0B1AC;
+    border: #696969 1px solid;
+    border-radius: 5px;
+    width: 100%;
+  }
+  div.message p.success{
+    padding: 5px;
+    background-image: linear-gradient(bottom, rgb(130,240,40) 34%, rgb(94,240,57) 67%, rgb(112,242,36) 84%);
+    background-image: -o-linear-gradient(bottom, rgb(130,240,40) 34%, rgb(94,240,57) 67%, rgb(112,242,36) 84%);
+    background-image: -moz-linear-gradient(bottom, rgb(130,240,40) 34%, rgb(94,240,57) 67%, rgb(112,242,36) 84%);
+    background-image: -webkit-linear-gradient(bottom, rgb(130,240,40) 34%, rgb(94,240,57) 67%, rgb(112,242,36) 84%);
+    background-image: -ms-linear-gradient(bottom, rgb(130,240,40) 34%, rgb(94,240,57) 67%, rgb(112,242,36) 84%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.34, rgb(130,240,40)),
+            color-stop(0.67, rgb(94,240,57)),
+            color-stop(0.84, rgb(112,242,36))
+    );
+  }
+  div.message p.warning{
+    padding: 5px;
+    background-image: linear-gradient(bottom, rgb(179,134,0) 28%, rgb(222,165,51) 64%, rgb(212,143,40) 82%);
+    background-image: -o-linear-gradient(bottom, rgb(179,134,0) 28%, rgb(222,165,51) 64%, rgb(212,143,40) 82%);
+    background-image: -moz-linear-gradient(bottom, rgb(179,134,0) 28%, rgb(222,165,51) 64%, rgb(212,143,40) 82%);
+    background-image: -webkit-linear-gradient(bottom, rgb(179,134,0) 28%, rgb(222,165,51) 64%, rgb(212,143,40) 82%);
+    background-image: -ms-linear-gradient(bottom, rgb(179,134,0) 28%, rgb(222,165,51) 64%, rgb(212,143,40) 82%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.28, rgb(179,134,0)),
+            color-stop(0.64, rgb(222,165,51)),
+            color-stop(0.82, rgb(212,143,40))
+    );
+    
+    font-size: 18px;
+  }
+  div.message p.error{
+    padding: 5px;
+    background-image: linear-gradient(bottom, rgb(179,0,0) 28%, rgb(214,28,53) 64%, rgb(171,36,36) 82%);
+    background-image: -o-linear-gradient(bottom, rgb(179,0,0) 28%, rgb(214,28,53) 64%, rgb(171,36,36) 82%);
+    background-image: -moz-linear-gradient(bottom, rgb(179,0,0) 28%, rgb(214,28,53) 64%, rgb(171,36,36) 82%);
+    background-image: -webkit-linear-gradient(bottom, rgb(179,0,0) 28%, rgb(214,28,53) 64%, rgb(171,36,36) 82%);
+    background-image: -ms-linear-gradient(bottom, rgb(179,0,0) 28%, rgb(214,28,53) 64%, rgb(171,36,36) 82%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.28, rgb(179,0,0)),
+            color-stop(0.64, rgb(214,28,53)),
+            color-stop(0.82, rgb(171,36,36))
+    );
+  }
+div#footer {
+	/*position:absolute;*/
+	width:100%;
+	bottom:0; /* stick to bottom */
+/*	background:#ddd;*/
+/*	border-top:6px double gray;*/
+        padding:1em;
+}
+  div#footer p {
+          
+          margin:0;
+  }
+  div#footer ul{
+    list-style: none;
+/*    margin-left: -40px;*/
+    margin: 10px 0 5px;
+  }
+  div#footer li{
+    float: left;
+    margin-right: 1em;
+      line-height: 35px;
+  }
+  div#footer a{
+    background-image: linear-gradient(bottom, rgb(242,162,41) 34%, rgb(240,152,57) 67%, rgb(245,135,17) 84%);
+    background-image: -o-linear-gradient(bottom, rgb(242,162,41) 34%, rgb(240,152,57) 67%, rgb(245,135,17) 84%);
+    background-image: -moz-linear-gradient(bottom, rgb(242,162,41) 34%, rgb(240,152,57) 67%, rgb(245,135,17) 84%);
+    background-image: -webkit-linear-gradient(bottom, rgb(242,162,41) 34%, rgb(240,152,57) 67%, rgb(245,135,17) 84%);
+    background-image: -ms-linear-gradient(bottom, rgb(242,162,41) 34%, rgb(240,152,57) 67%, rgb(245,135,17) 84%);
+
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0.34, rgb(242,162,41)),
+            color-stop(0.67, rgb(240,152,57)),
+            color-stop(0.84, rgb(245,135,17))
+    );
+    border: 1px gray solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+  }
+  div#footer a:hover, div#footer a.active{
+    color: white;
+  }

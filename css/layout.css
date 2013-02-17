@@ -1,0 +1,186 @@
+html,body {
+  margin:0;
+  padding:0;
+/*	height:100%;  needed for container min-height */
+  background:gray;
+
+  font-family:arial,sans-serif;
+  font-size:small;
+  color:#666;
+}
+h1{
+  font-size: small;
+  margin-bottom: 0;
+}
+a{
+  border: none;
+}
+img{
+  border: none;
+}
+body{
+  width: 960px;
+  margin:0 auto;
+  padding:0;
+}
+.clear{
+  clear: both;
+}
+div#wrapper{
+  position:relative; /* needed for footer positioning*/
+  margin:0 auto; /* center, not in IE5 */
+  width: 960px;
+  height:auto !important; /* real browsers */
+  height: 640px; /* IE6: treaded as min-height*/
+  min-height: 640px; /* real browsers */
+  overflow: hidden;
+}
+div#wrapper.home{
+  background: url(../images/home_background.png) no-repeat;
+}
+div#wrapper.producten{
+  background: url(../images/producten_background.png) no-repeat;
+}
+div#wrapper.projecten{
+  background: url(../images/projecten_background.png) no-repeat;
+}
+div#wrapper.contact{
+  background: url(../images/contact_background.png) no-repeat;
+}
+div#header{
+  padding-top: 35px;
+  padding-left: 90px;
+}
+
+div#film-box{
+  position: absolute;
+  left: 120px;
+  top: 200px;
+}
+
+div#content{
+  background: white;
+
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+
+  -moz-box-shadow: 1px 1px 1px #FF6600;
+  -webkit-box-shadow: 3px 3px 3px #FF6600;
+  box-shadow: 1px 1px 1px #FF6600;
+
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  padding: 20px 22px;
+  line-height: 18px;
+  width: 253px;
+  word-wrap: break-word;
+}
+div#content p{
+  margin-top: 11px;
+}
+a.emaillink{
+  color: #666;
+}
+div#footer {
+  background: url(../images/footer-repeater.png) repeat-x;
+  bottom: 15px; /* stick to bottom */
+  height: 20px;
+/*  margin-bottom: 15px;*/
+  position:absolute;
+  width:100%;
+  
+}
+  div#footer ul{
+    list-style: none;
+    margin-left: 65px;
+    padding: 0;
+  }
+  
+  div#footer ul#nav{
+    position: relative;
+  }
+
+  ul#nav li {
+    
+    position: relative;
+    float: left;
+    width:98px;
+    height:30px;
+    line-height:30px;
+    
+    margin-right: 6em; 
+  }
+  ul#nav li.mainItem{
+    margin-top: -14px;
+    *margin-top: 0px;
+  }
+  ul#nav ul.submenu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  ul#nav li ul.submenu {
+    bottom: 30px;
+    left:20%;
+    margin-left: -999em;
+    position: absolute;
+  }
+  ul#nav li ul.submenu li.submenu-item{
+    border: 1px solid white;
+  }
+  ul#nav li a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    height: 30px;
+    line-height:30px;
+    width:98px;
+    text-align:center;
+  }
+  ul#nav li li {
+    clear:left
+  }
+ ul#nav li.submenu-item a{background-color: #55594E;}
+ 
+  /* this sets all hovered lists to white and current item */
+#nav li.current a, 
+#nav li:hover a, 
+#nav li.over a, 
+#nav li:hover 
+li:hover a, 
+#nav li.over 
+li.over a, 
+#nav li:hover 
+li:hover 
+li:hover a, 
+#nav li.over li.over li.over a, 
+#nav li:hover li a:hover, 
+#nav li.over li a:hover, 
+#nav li:hover li:hover li:hover a:hover, 
+#nav li.over li li a:hover, 
+#nav li:hover li:hover li:hover li:hover a:hover, 
+#nav li.over li.over li.over li.over a:hover {
+	color: white;
+	background-position:0 -430px;
+        
+}
+ /*set dropdown to default */
+#nav li:hover li a, #nav li.over li a, #nav li:hover li:hover li a, #nav li.over li.over li a, #nav li:hover li:hover li:hover li a, #nav li.over li.over li.over li a {
+	color: #FFF;
+	background-position:0 0;
+}
+ul#nav li:hover ul ul, ul#nav li:hover ul ul ul, ul#nav li.over ul ul, ul#nav li.over ul ul ul {
+	margin-left:-999em;
+}
+ul#nav li:hover ul, ul#nav li li:hover ul, ul#nav li li li:hover ul, ul#nav li.over ul, ul#nav li li.over ul, ul#nav li li li.over ul {
+	margin-left:0;
+        z-index: 999;
+}
+  
+  
+  
+
+  
