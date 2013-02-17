@@ -192,9 +192,7 @@ class Cms extends CI_Controller {
     $data['parent_ID'][0] = '-- Kies een pagina --';
     foreach($parents as $row){
       $data['parent_ID'][$row->id] = $row->menu_title;
-      if($row->id == $data['page_parent_ID']){
-        $data['selected'] = $row->id;
-      }
+      $data['selected'] = array($row->id);
     }
     
     // Set common properties

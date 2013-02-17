@@ -41,10 +41,11 @@ class Page_model extends CI_Model{
     return $result->result_array();
   }
 
-  public function get_menu($parent){
-    $this->db->select('menu_title')->select('permalink')->select('id')->from('page')->where(array('page_status' => 1, 'page_parent_ID' => $parent))->order_by('id', 'DESC');
+  public function get_menu($parent = 0){
+    $this->db->select('menu_title')->select('permalink')->select('id')->select('page_parent_ID')->from('page')->where(array('page_parent_ID' => $parent))->order_by('id', 'DESC');
     $menu = $this->db->get();
 //echo $this->db->last_query();
+//      var_dump($menu->result());die;
     return $menu->result();
   }
 }

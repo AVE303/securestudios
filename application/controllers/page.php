@@ -31,21 +31,14 @@ class Page extends CI_Controller{
     $content = $this->page_model->get_row('home');
     $filmdata =  $this->page_model->get_film('home');
 
-    //Get the project submenu
-    $projects = $this->get_menu($this->cms_model->getPermalinkId('projecten', 'page')->id);
-    
-    foreach($projects as $item) {
-      $data['projectmenu'][$item->id]['menu_title'] = $item->menu_title;
-      $data['projectmenu'][$item->id]['permalink'] = $item->permalink;
+    $mainMenu = $this->page_model->get_menu();
+      $submenu = new stdClass();
+//      var_dump($mainMenu);
+    foreach($mainMenu as $parent){
+        $subMenu = $this->page_model->get_menu($parent->id);
+//        echo $this->db->last_query(); echo '<br>'.PHP_EOL;
     }
-    
-    //Get the product submenu
-    $products = $this->get_menu($this->cms_model->getPermalinkId('producten', 'page')->id);
-    foreach($products as $item) {
-      $data['productmenu'][$item->id]['menu_title'] = $item->menu_title;
-      $data['productmenu'][$item->id]['permalink'] = $item->permalink;
-    }
-    
+//    var_dump($subMenu); die;
     if(!empty($content)){
       $data['content'] = $content;
     } else {
@@ -118,12 +111,25 @@ class Page extends CI_Controller{
     $this->load->view('main_template', $data);
   }
 
-  public function get_menu($parent = NULL){
+  public function get_menu($parent = 0){
     
     $menu = $this->page_model->get_menu($parent);
     return $menu;
   }
-
+//Get the project submenu
+//    $projects = $this->get_menu($this->cms_model->getPermalinkId('projecten', 'page')->id);
+//
+//    foreach($projects as $item) {
+//      $data['projectmenu'][$item->id]['menu_title'] = $item->menu_title;
+//      $data['projectmenu'][$item->id]['permalink'] = $item->permalink;
+//    }
+//
+//    //Get the product submenu
+//    $products = $this->get_menu($this->cms_model->getPermalinkId('producten', 'page')->id);
+//    foreach($products as $item) {
+//      $data['productmenu'][$item->id]['menu_title'] = $item->menu_title;
+//      $data['productmenu'][$item->id]['permalink'] = $item->permalink;
+//    }
   
 
 }

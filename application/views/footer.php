@@ -1,7 +1,7 @@
 
     <div id="footer">
         <ul id="nav">
-          <li class="mainItem"><a href="/"><img src="<?php echo site_url('images/button-home.png');?>" /></a></li>
+          <li class="mainItem"><a href="/" class="bauhausfont">Home</a></li>
           <li class="mainItem"><a href="<?php echo site_url('page/content/producten');?>"><img src="<?php echo site_url('images/button-producten.png');?>" /></a>
           <?php
           if(!empty($productmenu)){
