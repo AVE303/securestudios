@@ -42,11 +42,13 @@ class Page_model extends CI_Model{
   }
 
   public function get_menu($parent = 0){
-    $this->db->select('menu_title')->select('permalink')->select('id')->select('page_parent_ID')->from('page')->where(array('page_parent_ID' => $parent))->order_by('id', 'DESC');
+    $this->db->select('menu_title')->select('permalink')->select('id')->select('page_parent_ID')->from('page')->where(array('page_parent_ID' => $parent))->order_by('id', 'ASC');
     $menu = $this->db->get();
-//echo $this->db->last_query();
-//      var_dump($menu->result());die;
-    return $menu->result();
+    if($menu->num_rows() >0){
+
+      return $menu->result();
+    }
+    return false;
   }
 }
 

@@ -1,4 +1,5 @@
 <?php
+//var_dump($submenu);die;
 if(!empty($filmdata)){
 //  var_dump($filmdata); die;
   echo '<div id="film-box">'.PHP_EOL;
