@@ -85,13 +85,14 @@ class Page extends CI_Controller{
       $data['filmdata'] = '';
     }
     $content = $this->page_model->get_row($permalink);
-    
+
     if(!empty($content)){
       $data['content'] = $content;
     } else {
       $data['content'] = '';
     }
 
+    // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
 
     if(isset($mainMenu) && $mainMenu != NULL){
@@ -117,20 +118,6 @@ class Page extends CI_Controller{
     $menu = $this->page_model->get_menu($parent);
     return $menu;
   }
-//Get the project submenu
-//    $projects = $this->get_menu($this->cms_model->getPermalinkId('projecten', 'page')->id);
-//
-//    foreach($projects as $item) {
-//      $data['projectmenu'][$item->id]['menu_title'] = $item->menu_title;
-//      $data['projectmenu'][$item->id]['permalink'] = $item->permalink;
-//    }
-//
-//    //Get the product submenu
-//    $products = $this->get_menu($this->cms_model->getPermalinkId('producten', 'page')->id);
-//    foreach($products as $item) {
-//      $data['productmenu'][$item->id]['menu_title'] = $item->menu_title;
-//      $data['productmenu'][$item->id]['permalink'] = $item->permalink;
-//    }
-  
+
 
 }

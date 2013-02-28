@@ -16,8 +16,11 @@ class Page_model extends CI_Model{
       $this->db->select('*')->from('page')->where(array('id' => $id, 'page_status' => 1));
       $query = $this->db->get();
     }
+    if($query->num_rows() >0){
 
-    return $query->result_array();
+      return $query->result_array();
+    }
+    return false;
   }
 
   public function get_film($permalink = null, $limit = null, $offset = null){
