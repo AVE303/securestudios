@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c457e22e-ba53-406a-9037-6e906cb0c617" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/page.php" afterPath="$PROJECT_DIR$/application/controllers/page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/page_model.php" afterPath="$PROJECT_DIR$/application/models/page_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/footer.php" afterPath="$PROJECT_DIR$/application/views/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/view_page.php" afterPath="$PROJECT_DIR$/application/views/view_page.php" />
     </list>
     <ignored path="secure_studios.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="page.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/page.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="5" selection-start="2879" selection-end="2879" vertical-scroll-proportion="-22.884615">
+            <state line="86" column="54" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.31530493">
               <folding />
             </state>
           </provider>
@@ -68,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="footer.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="109" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.68469507">
+            <state line="38" column="109" selection-start="1827" selection-end="1827" vertical-scroll-proportion="-22.884615">
               <folding>
                 <element signature="e#339#376#0" expanded="true" />
                 <element signature="e#972#1000#0" expanded="true" />
@@ -116,8 +112,8 @@
         <option value="$PROJECT_DIR$/css/layout.css" />
         <option value="$PROJECT_DIR$/application/models/page_model.php" />
         <option value="$PROJECT_DIR$/application/views/view_page.php" />
-        <option value="$PROJECT_DIR$/application/controllers/page.php" />
         <option value="$PROJECT_DIR$/application/views/footer.php" />
+        <option value="$PROJECT_DIR$/application/controllers/page.php" />
       </list>
     </option>
   </component>
@@ -495,6 +491,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="109" selection-start="1827" selection-end="1827" vertical-scroll-proportion="-22.884615">
+          <folding>
+            <element signature="e#339#376#0" expanded="true" />
+            <element signature="e#972#1000#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/view_page.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="22" selection-start="54" selection-end="54" vertical-scroll-proportion="-1.3076923">
@@ -504,18 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="5" selection-start="2879" selection-end="2879" vertical-scroll-proportion="-22.884615">
+        <state line="86" column="54" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.31530493">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="109" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.68469507">
-          <folding>
-            <element signature="e#339#376#0" expanded="true" />
-            <element signature="e#972#1000#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

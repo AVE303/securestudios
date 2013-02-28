@@ -70,14 +70,14 @@ class Page extends CI_Controller{
       case 'contact': $data['background'] = 'contact'; break;
       default: $data['background'] = 'home'; break;
     }
-    if($this->uri->segment(4) != '' && $this->uri->segment(3) == 'projecten' ){
-      $permalink = $this->uri->segment(4);
+    if($this->uri->segment(3) != '' && $this->uri->segment(3) == 'projecten' ){
+      $permalink = $this->uri->segment(3);
       
       $data['filmdata'] = $this->page_model->get_film($permalink);
       
-    } elseif ($this->uri->segment(4) != '' && $this->uri->segment(3) == 'producten') {
+    } elseif ($this->uri->segment(3) != '' && $this->uri->segment(3) == 'producten') {
       
-      $permalink = $this->uri->segment(4);
+      $permalink = $this->uri->segment(3);
       $data['filmdata'] = '';
       
     } else {
@@ -85,7 +85,7 @@ class Page extends CI_Controller{
       $data['filmdata'] = '';
     }
     $content = $this->page_model->get_row($permalink);
-    
+
     if(!empty($content)){
       $data['content'] = $content;
     } else {
@@ -117,20 +117,6 @@ class Page extends CI_Controller{
     $menu = $this->page_model->get_menu($parent);
     return $menu;
   }
-//Get the project submenu
-//    $projects = $this->get_menu($this->cms_model->getPermalinkId('projecten', 'page')->id);
-//
-//    foreach($projects as $item) {
-//      $data['projectmenu'][$item->id]['menu_title'] = $item->menu_title;
-//      $data['projectmenu'][$item->id]['permalink'] = $item->permalink;
-//    }
-//
-//    //Get the product submenu
-//    $products = $this->get_menu($this->cms_model->getPermalinkId('producten', 'page')->id);
-//    foreach($products as $item) {
-//      $data['productmenu'][$item->id]['menu_title'] = $item->menu_title;
-//      $data['productmenu'][$item->id]['permalink'] = $item->permalink;
-//    }
-  
+
 
 }
