@@ -5,24 +5,30 @@ class Cms_model extends CI_Model{
     parent::__construct();
   }
 
-  public function getAll($table, $orderColumn = 'id', $orderDirection = 'ASC', $subs = FALSE, $limit = null, $offset = null) {
+  public function getAll($table, $orderColumn = 'id', $orderDirection = 'ASC', $subs = FALSE, $limit = null, $offset = null, $condition = array()) {
 
     if($subs){
       $this->db->where('page_parent_ID !=', 0);
     } elseif($table == 'page') {
       $this->db->where('page_parent_ID =', 0);
     }
-    
-    if (!empty($orderColumn)){
-      $this->db->order_by($orderColumn, $orderDirection);
+
+    if(!empty($condition)){
+      foreach($condition as $q => $con){
+        $this->db->where($q,$con);
+      }
     }
+
+    // set order column and direction
+    $this->db->order_by($orderColumn, $orderDirection);
+
     $query = $this->db->get($table, $limit, $offset);
 
     if ($query->num_rows() > 0) {
       return $query->result();
-    } else {
-      return FALSE;
     }
+    return FALSE;
+
   }
   
   public function getParents($table){

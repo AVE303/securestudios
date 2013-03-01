@@ -5,8 +5,8 @@
       ?>
       <li><a href="/cms">Pagina overzicht</a></li>
       <li><a href="/cms/add">Pagina toevoegen</a></li>
-      <li><a href="/cms/projects">Project overzicht</a></li>
-      <li><a href="/cms/addproject">Project toevoegen</a></li>
+      <li><a href="/cms/projects">Film overzicht</a></li>
+      <li><a href="/cms/addproject">Film toevoegen</a></li>
       <li><a href="/films/addmainpagefilm">Film toevoegen op hoofdpagina</a></li>
       <li><a href="/login/logout">Uitloggen</a></li>
       <?php endif;?>

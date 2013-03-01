@@ -20,8 +20,6 @@
 
 class Films extends Cms{
 
-
-
   function Films(){
     parent::Cms();
 
@@ -164,5 +162,33 @@ class Films extends Cms{
       $this->load->view($this->tpl, $data);
     }
   }
+  function update_mainpage_film($id){
+    $data = array();
 
+    // prefill form values
+    $filmData = $this->cms_model->getRecord('film', $id);
+
+    foreach ($filmData as $key => $object) {
+      foreach($object as $key => $value){
+        $data[$key] = $value;
+      }
+    }
+
+    // Set common properties
+    $data['title'] = 'Update film';
+    $data['message'] = '';
+    $data['action'] = site_url('films/process_mainpage_film/');
+    $data['link_back'] = anchor('cms/projects', 'Terug naar de lijst.', array('class' => 'button'));
+    $data['main_content'] = 'cms/edit_project';
+    $data['browserTitle'] = 'Films';
+    $data['error'] = '';
+
+    $data['pages'] = $this->cms_model->getParents('page');
+    $data['active_page'][] = $data['page_id'];
+
+    // Load view
+    $data['header'] = $this->header;
+    $data['footer'] = $this->footer;
+    $this->load->view($this->tpl, $data);
+  }
 }

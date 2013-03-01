@@ -280,7 +280,9 @@ class Cms extends CI_Controller {
   function projects() {
     $data = array();
 
-    $projects = $this->cms_model->getAll('film', 'id');
+    //Set where condition for the query to select subpage films
+    $conditions = array('is_parent !='=> '1');
+    $projects = $this->cms_model->getAll('film', 'id', 'ASC', FALSE, NULL,NULL, $conditions);
 
     // configure the pagination
     $config['base_url'] = site_url().'cms/projects/';
@@ -290,17 +292,20 @@ class Cms extends CI_Controller {
 
     $this->pagination->initialize($config);
 
-    $data['pages'] = $this->cms_model->getAll('film', 'id');
+    $data['pages'] = $this->cms_model->getAll('film', 'id', 'ASC', FALSE, NULL,NULL, $conditions);
     if(empty($data['pages'])){
       $data['no_result'] = 'Er zijn nog geen projecten toegevoegd aan het systeem';
     } else {
       $data['no_result'] = '';
     }
-//echo $this->db->last_query();
+
+    $conditions = array('is_parent =' => '1');
+    $data['mainpages'] = $this->cms_model->getAll('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+
     $data['message'] = '';
     $data['header'] = $this->header;
     $data['footer'] = $this->footer;
-    $data['browserTitle'] = 'Projecten Overzicht';
+    $data['browserTitle'] = 'Film Overzicht';
     $data['main_content'] = 'cms/cms-body-projecten';
 
     $this->load->view($this->tpl, $data);

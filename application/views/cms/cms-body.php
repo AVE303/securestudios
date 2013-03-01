@@ -43,7 +43,7 @@
         echo '<tr><td>&nbsp;</td></tr>'.PHP_EOL;
         echo '<tr>'.PHP_EOL;
         echo '<td>'.PHP_EOL;
-        echo '<h2>Project pagina\'s'.PHP_EOL;
+        echo '<h2>Sub pagina\'s'.PHP_EOL;
         echo '</td>'.PHP_EOL;
         echo '</tr>'.PHP_EOL;
         if($project_pages) {

@@ -15,10 +15,39 @@
       </thead>
       <tbody>
         <tr>
+          <td><h4>Hoofdpagina's</h4></td>
+        </tr>
+        <?php
+        if ($mainpages) {
+          foreach ($mainpages as $page => $value) {
+            if(!empty($value->link)) {
+              $youtube = '<a href="http://www.youtube.com/watch?v='.$value->link.'" target="_blank">http://www.youtube.com/watch?v='.$value->link.'</a>';
+            } else {
+              $youtube = 'Voeg link toe';
+            }
+            echo '<tr>' . PHP_EOL;
+            echo '<td><a href="' . site_url('films/update_mainpage_film/' . $value->id) . '">' . $value->name . '</a></td>' . PHP_EOL;
+            echo '<td align="left">'. $youtube .'</td>' . PHP_EOL;
+            echo '<td align="center"><a href="' . site_url('films/update_mainpage_film/' . $value->id) . '"><img src="' . site_url('assets/icons/documents_pencil.png') . '" alt="edit" /></a>
+            <a href="' . site_url('cms/delete_project/' . $value->id) . '" onclick="alert("Weet je het zeker?")"><img src="' . site_url('assets/icons/cross_circle.png') . '" alt="delete" /></a></td>' . PHP_EOL;
+            echo '</tr>' . PHP_EOL;
+          }
+
+        } else {
+          echo '<tr>' . PHP_EOL;
+          echo '<td><em>'. $no_result .'</em></td>' . PHP_EOL;
+          echo '</tr>' . PHP_EOL;
+        }
+        ?>
+        <tr>
           <td>&nbsp;</td>
         </tr>
         <?php
         if ($pages) {
+          echo '<hr>';
+          echo '<tr>';
+          echo '<td><h4>Subpagina\'s</h4></td>';
+          echo '</tr>';
           foreach ($pages as $page => $value) {
             if(!empty($value->link)) {
               $youtube = '<a href="http://www.youtube.com/watch?v='.$value->link.'" target="_blank">http://www.youtube.com/watch?v='.$value->link.'</a>';
