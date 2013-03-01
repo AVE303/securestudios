@@ -92,6 +92,7 @@ class Page extends CI_Controller{
       $data['content'] = '';
     }
 
+    // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
 
     if(isset($mainMenu) && $mainMenu != NULL){
