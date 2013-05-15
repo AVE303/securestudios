@@ -486,7 +486,7 @@ class Cms extends CI_Controller {
     $this->_set_rules();
 
     // Set error messages
-    $this->form_validation->set_message('required', '<font style="color: red; font-size:12px;">%s is required!</font>');
+    $this->form_validation->set_message('required', '%s is required!');
     $this->form_validation->set_message('isset', '* required');
 
     if ($this->form_validation->run('film_update') == FALSE) {
@@ -498,12 +498,15 @@ class Cms extends CI_Controller {
           'id' => $this->input->post('id'),
           'name' => $this->input->post('name'),
           'link' => $this->input->post('link'),
-          'filmtext' => $this->input->post('filmtext'),
+          'is_parent' => 0,
           'page_id' => $this->input->post('page_id'),
       );
 
       $this->cms_model->updateRecord($id, $data, 'film');
-      $data['pages'] = $this->cms_model->getALL('film');
+      $conditions = array('is_parent !='=> '1');
+      $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+      $conditions = array('is_parent ='=> '1');
+      $data['mainpages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
 
       // set user confirm message
       $data['message'] = '<div class="success">Het project is aangepast in de database.</div>';
