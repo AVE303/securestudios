@@ -65,7 +65,7 @@ class Page extends CI_Controller{
 
     // Load the background image class variable
     switch ($this->uri->segment(3)) {
-      case 'producten': $data['background'] = 'producten'; break;
+      case 'bedrijf': $data['background'] = 'producten'; break;
       case 'projecten': $data['background'] = 'projecten'; break;
       case 'contact': $data['background'] = 'contact'; break;
       default: $data['background'] = 'home'; break;
@@ -86,24 +86,34 @@ class Page extends CI_Controller{
     }
     $content = $this->page_model->get_row($permalink);
 
+
     if(!empty($content)){
       $data['content'] = $content;
     } else {
       $data['content'] = '';
     }
 
+
     // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
 
     if(isset($mainMenu) && $mainMenu != NULL){
       foreach($mainMenu as $parent){
-        $data['submenu'][$parent->permalink] = $this->page_model->get_menu($parent->id);
+
+        $submenus[$parent->id] = $this->page_model->get_menu($parent->id);
+
       }
     }
 
-    if(!empty($mainMenu)){
-      $data['menu'] = $mainMenu;
+    foreach($mainMenu as $parent){
+      foreach($submenus as $sub => $subValue){
+        $data['menu'][$parent->permalink] = $parent;
+        if($sub == $parent->id){
+          $data['menu'][$parent->permalink]->submenu = $subValue;
+        }
+      }
     }
+
 
     // Load the views
     $data['header'] = 'header';

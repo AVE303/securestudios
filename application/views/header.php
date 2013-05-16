@@ -3,8 +3,8 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="<?php //echo $pageContent[0]['meta_description']; ?>" />
-    <meta name="keywords" content="<?php //echo $pageContent[0]['meta_keywords']; ?>" />
+    <meta name="description" content="<?php echo $content[0]['meta_description']; ?>" />
+    <meta name="keywords" content="<?php echo $content[0]['meta_keywords']; ?>" />
     <link href="<?php echo site_url(); ?>css/layout.css" rel="stylesheet" media="screen" type="text/css" />
 <!--    <link href="<?php echo site_url(); ?>js//supersized/core/css/supersized.core.css" rel="stylesheet" media="screen" type="text/css" />-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -43,6 +43,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
   </script>
   </head>
   <body>
+
     <div id="wrapper" class="<?php echo $background;?>">
       <div id="header">
         <div id="logo"><img src="<?php echo site_url('images/logo.png'); ?>" alt="logo"/></div>
