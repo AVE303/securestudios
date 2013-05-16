@@ -13,7 +13,7 @@ html,body {
 /*	height:100%;  needed for container min-height */
   background:gray;
 
-  font-family:arial,sans-serif;
+  font-family: verdana,sans-serif;
   font-size:small;
   color:#666;
 }
@@ -83,7 +83,7 @@ div#content{
   right: 35px;
   padding: 20px 22px;
   line-height: 18px;
-  width: 253px;
+  width: 325px;
   word-wrap: break-word;
 }
 div#content p{
@@ -105,21 +105,19 @@ div#footer {
     list-style: none;
     margin-left: 65px;
     padding: 0;
+    padding-left: 20px;
   }
-  
+
   div#footer ul#nav{
     position: relative;
   }
-
+  ul#nav{
+  }
   ul#nav li {
     
     position: relative;
     float: left;
-    width:98px;
-    height:30px;
-    line-height:30px;
-    
-    margin-right: 6em; 
+    margin-right: 6em;
   }
   ul#nav li.mainItem{
     margin-top: -18px;
@@ -139,15 +137,18 @@ div#footer {
   }
   ul#nav li ul.submenu li.submenu-item{
     border: 1px solid white;
+    width: 98px;
+  }
+  ul#nav li ul.submenu li.submenu-item a{
+      width: 98px;
+      line-height: 30px;
+      padding-left: 2px;
   }
   ul#nav li a{
     display: block;
     text-decoration: none;
     color: white;
-    height: 30px;
-    line-height:30px;
-    width:98px;
-    text-align:center;
+
   }
   ul#nav li li {
     clear:left

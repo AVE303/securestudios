@@ -186,13 +186,16 @@ class Cms extends CI_Controller {
         $data[$key] = $value;
       }
     }
-    
+
     $parents = $this->cms_model->getParents('page');
 
     $data['parent_ID'][0] = '-- Kies een pagina --';
     foreach($parents as $row){
       $data['parent_ID'][$row->id] = $row->menu_title;
-      $data['selected'] = array($row->id);
+      $data['selected'] = array(0);
+      if($pageData[0]->page_parent_ID > 0){
+        $data['selected'] = array($pageData[0]->page_parent_ID);
+      }
     }
     
     // Set common properties
@@ -259,7 +262,7 @@ class Cms extends CI_Controller {
           'meta_description' => $this->input->post('meta_description'),
       );
 
-//var_dump($updatedPage); die;
+
       $this->cms_model->updateRecord($id, $updatedPage, 'page');
 
       $data['pages'] = $this->cms_model->getAll('page');

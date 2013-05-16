@@ -22,9 +22,9 @@ if(!empty($filmdata)){
   <h1><?php echo $content[0]['content_title'];?></h1>
   <?php echo $content[0]['content']; ?>
   <?php 
-  if($this->uri->segment(3) == 'contact'){
-    echo 'E-mail: '.safe_mailto('meerinfo@securestudios.nl', 'meerinfo@securestudios.nl', array('class' => 'emaillink'));
-  }
+//  if($this->uri->segment(3) == 'contact'){
+//    echo 'E-mail: '.safe_mailto('meerinfo@securestudios.nl', 'meerinfo@securestudios.nl', array('class' => 'emaillink'));
+//  }
   ?>
 </div>
 <div class="clear">&nbsp;</div>

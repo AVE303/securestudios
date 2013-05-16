@@ -68,6 +68,7 @@
           echo '<tr>' . PHP_EOL;
           echo '<td><em>'. $no_result .'</em></td>' . PHP_EOL;
           echo '</tr>' . PHP_EOL;
+
         }
         ?>
       </tbody>

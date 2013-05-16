@@ -18,7 +18,12 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+define('HTTP_HOST', $_SERVER['HTTP_HOST']);
+  if(HTTP_HOST == 'securestudio.dev'){
+	  define('ENVIRONMENT', 'development');
+  } else {
+    define('ENVIRONMENT', 'production');
+  }
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

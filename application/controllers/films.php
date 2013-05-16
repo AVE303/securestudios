@@ -17,7 +17,7 @@
  * @property CI_FTP $ftp
  * @property cms_model $cms_model
  */
-
+require(APPPATH.'controllers/cms.php');
 class Films extends Cms{
 
   function Films(){
@@ -47,7 +47,7 @@ class Films extends Cms{
      *  Get the parent pages. Loop thrue them and check if their id exists in the film table.
      * */
     $parentpages = $this->cms_model->getParents('page');
-
+    $filmPages = '';
     foreach($parentpages as $parent){
       $page_id = $this->cms_model->getRecord('film',NULL,'page_id',$parent->id);
       if(!empty($page_id)){
