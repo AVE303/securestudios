@@ -19,11 +19,11 @@
  *
  */
 define('HTTP_HOST', $_SERVER['HTTP_HOST']);
-  if(HTTP_HOST == 'securestudio.dev'){
-	  define('ENVIRONMENT', 'development');
-  } else {
+define('ENVIRONMENT', 'development');
+  if(HTTP_HOST != 'securestudio.dev'){
     define('ENVIRONMENT', 'production');
   }
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

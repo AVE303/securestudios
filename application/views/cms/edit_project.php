@@ -14,7 +14,7 @@ echo form_open_multipart($action, array('class' => 'edit-form'));
       <td><?php
       if(isset($page_name)){
 
-          echo form_hidden($page_name[0]->menu_title);
+          echo form_hidden($page_name->menu_title);
       }
 
       ?></td>

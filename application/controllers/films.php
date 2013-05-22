@@ -198,7 +198,7 @@ class Films extends Cms{
     $this->load->view($this->tpl, $data);
   }
 
-  public function process_mainpage_film_update($id) {
+  public function process_mainpage_film_update() {
     $data['browserTitle'] = 'Hoofdpagina film aangepast';
     $data = array();
 
@@ -240,13 +240,14 @@ class Films extends Cms{
       $id = $this->input->post('id');
       $data = array(
         'id' => $this->input->post('id'),
-        'name' => $this->input->post('name'),
         'link' => $this->input->post('link'),
 //        'filmtext' => $this->input->post('filmtext'),
         'page_id' => $this->input->post('page_id'),
         'is_parent' => 1
       );
 
+      $name = $this->cms_model->getTitle($this->input->post('page_id'));
+      $data['name'] = $name->menu_title;
       $this->cms_model->updateRecord($id, $data, 'film');
 
       //Get main pages and subpages
@@ -261,6 +262,7 @@ class Films extends Cms{
       $data['browserTitle'] = 'Projecten';
       $data['main_content'] = 'cms/cms-body-projecten';
       $data['link_back'] = anchor('cms/projects', 'Terug naar de lijst.', array('class' => 'button'));
+
 
       //load updatesucces view
       $data['header'] = $this->header;

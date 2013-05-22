@@ -64,11 +64,6 @@
           echo '<tr>';
           echo '<td>' . $this->pagination->create_links() . '</td>';
           echo '</tr>';
-        } else {
-          echo '<tr>' . PHP_EOL;
-          echo '<td><em>'. $no_result .'</em></td>' . PHP_EOL;
-          echo '</tr>' . PHP_EOL;
-
         }
         ?>
       </tbody>
