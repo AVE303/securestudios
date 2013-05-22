@@ -258,4 +258,71 @@ class Films extends Cms{
       $this->load->view($this->tpl, $data);
     }
   }
+  function process_mainpage_film($id){
+    $data['browserTitle'] = 'Projecten';
+    $data = array();
+
+    $id = $this->input->post('id');
+
+    // prefill form values
+    $filmData = $this->cms_model->getRecord('film', $id);
+//echo $this->db->last_query();
+    foreach ($filmData as $key => $object) {
+      foreach($object as $key => $value){
+        $data[$key] = $value;
+      }
+    }
+
+    // Set common page properties
+    $data['pageTitle']      = 'Update film';
+    $data['message']        = '';
+    $data['action']         = site_url('film/update_mainpage_film');
+    $data['browserTitle']   = 'Projecten';
+    $data['main_content']   = 'cms/edit_film';
+    $data['link_back']      = anchor('cms/projects', 'Terug naar de lijst.', array('class' => 'button'));
+    $data['error']          = '';
+
+    // set pages array
+    $data['pages'] = $this->cms_model->getParents('page');
+
+    // setting validation rules
+    $this->_set_rules();
+
+    // Set error messages
+    $this->form_validation->set_message('required', '%s is required!');
+    $this->form_validation->set_message('isset', '* required');
+
+    if ($this->form_validation->run('film_update') == FALSE) {
+      $this->load->view($this->tpl, $data);
+    } else {
+
+      $id = $this->input->post('id');
+      $data = array(
+        'id' => $this->input->post('id'),
+        'name' => $this->input->post('name'),
+        'link' => $this->input->post('link'),
+        'is_parent' => 1,
+        'page_id' => $this->input->post('page_id'),
+      );
+
+      $this->cms_model->updateRecord($id, $data, 'film');
+
+      $conditions = array('is_parent !='=> '1');
+
+      $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+      $conditions = array('is_parent ='=> '1');
+      $data['mainpages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+      // set user confirm message
+      $data['message'] = '<div class="success">De film is aangepast in de database.</div>';
+      $data['title'] = 'Film aangepast';
+      $data['browserTitle'] = 'Films';
+      $data['main_content'] = 'cms/cms-body-projecten';
+      $data['link_back'] = anchor('cms/projects', 'Terug naar de lijst.', array('class' => 'button'));
+
+      //load updatesucces view
+      $data['header'] = $this->header;
+      $data['footer'] = $this->footer;
+      $this->load->view($this->tpl, $data);
+    }
+  }
 }
