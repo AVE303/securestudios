@@ -40,22 +40,22 @@ class Cms_model extends CI_Model{
     
     if($q->num_rows() >0) {
       return $q->result();
-    } else {
-      return false;
     }
+      return false;
+
   }
 
 
   public function getAllProjectNames() {
-    $this->db->select('id, menu_title')->where('page_parent_ID !=', 0);
+    $this->db->select('menu_title')->select('id')->where('page_parent_ID !=', 0);
     $query = $this->db->get('page');
     
     if($query->num_rows() > 0){
       return $query->result();
     }
-    else {
-      return false;
-    }
+
+    return false;
+
   }
 
   /*
@@ -64,7 +64,7 @@ class Cms_model extends CI_Model{
   public function getAllPageTitles($skiphome = true) {
     $this->db->select('id, menu_title');
     if($skiphome === true) {
-      $this->db->where('menu_title !=', 'Home');
+      $this->db->where('menu_title !=', 'home');
     }
     $query = $this->db->get('page');
 
@@ -76,16 +76,18 @@ class Cms_model extends CI_Model{
     }
   }
 /**
-* Get page title
+* Get title or name
  * @param $id int the id of the record to fetch
+ * @param $select string of the column to fetch
+ * @param $table string of the table to select from
  * @return $title string
 */
-  public function getPageTitle($id) {
-    $this->db->select('menu_title')->where('id =',$id);
-    $query = $this->db->get('page');
+  public function getTitle($id, $select ='menu_title', $table = 'page') {
+    $this->db->select($select)->where('id =',$id);
+    $query = $this->db->get($table);
     if($query->num_rows() > 0) {
 
-      return $query->result();
+      return $query->row();
     }
     return false;
   }
@@ -197,4 +199,6 @@ class Cms_model extends CI_Model{
 
     return $arrayColumns;
   }
+
+
 }

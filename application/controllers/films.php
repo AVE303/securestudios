@@ -133,6 +133,8 @@ class Films extends Cms{
         'page_id' => $this->input->post('page_id'),
       );
 
+      $name = $this->cms_model->getTitle($this->input->post('page_id'));
+      $data['name'] = $name->menu_title;
 
       // save the new record
       $id = $this->cms_model->addRecord($data, 'film');
@@ -145,13 +147,16 @@ class Films extends Cms{
       // set user message
       $data['message'] = '<div class="message success">Succesvol een nieuwe film aan een pagina toegevoegd!</div>';
       $data['title'] = 'Film toegevoegd!';
-      $data['main_content'] = 'cms/cms-body-films';
+      $data['main_content'] = 'cms/cms-body-projecten';
       $data['header'] = $this->header;
       $data['footer'] = $this->footer;
       $data['link_back'] = anchor('/films/listall', 'Terug naar de lijst', array('class' => 'button'));
 
-      // Get film list
-      $data['pages'] = $this->cms_model->getAll('film', 'page_id', 'ASC', FALSE);
+      //Get main pages and subpages
+      $conditions = array('is_parent !='=> '1');
+      $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+      $conditions = array('is_parent ='=> '1');
+      $data['mainpages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
       // Set no result string
       if(!$data['pages']){
         $data['no_result'] = 'Er zijn nog geen films toegevoegd aan project pagina\'s';
@@ -185,7 +190,7 @@ class Films extends Cms{
 
     $data['pages'] = $this->cms_model->getParents('page');
     $data['active_page'][] = $data['page_id'];
-    $data['page_name'] = $this->cms_model->getPageTitle($data['page_id']);
+    $data['page_name'] = $this->cms_model->getTitle($data['page_id']);
 
     // Load view
     $data['header'] = $this->header;
@@ -201,7 +206,7 @@ class Films extends Cms{
 
     // prefill form values
     $filmData = $this->cms_model->getRecord('film', $id);
-//echo $this->db->last_query();
+
     foreach ($filmData as $key => $object) {
       foreach($object as $key => $value){
         $data[$key] = $value;
@@ -218,7 +223,7 @@ class Films extends Cms{
     $data['error']          = '';
 
     // set pages array
-    $data['page_name'] = $this->cms_model->getPageTitle($id);
+    $data['page_name'] = $this->cms_model->getTitle($id);
 //echo $this->db->last_query();
 //    die;
     // setting validation rules
@@ -243,7 +248,12 @@ class Films extends Cms{
       );
 
       $this->cms_model->updateRecord($id, $data, 'film');
-      $data['pages'] = $this->cms_model->getALL('film');
+
+      //Get main pages and subpages
+      $conditions = array('is_parent !='=> '1');
+      $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+      $conditions = array('is_parent ='=> '1');
+      $data['mainpages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
 
       // set user confirm message
       $data['message'] = '<div class="success">Het project is aangepast in de database.</div>';
@@ -299,19 +309,20 @@ class Films extends Cms{
       $id = $this->input->post('id');
       $data = array(
         'id' => $this->input->post('id'),
-        'name' => $this->input->post('name'),
         'link' => $this->input->post('link'),
         'is_parent' => 1,
         'page_id' => $this->input->post('page_id'),
       );
 
+      $name = $this->cms_model->getTitle($this->input->post('page_id'));
+      $data['name'] = $name->menu_title;
       $this->cms_model->updateRecord($id, $data, 'film');
 
       $conditions = array('is_parent !='=> '1');
-
       $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
       $conditions = array('is_parent ='=> '1');
       $data['mainpages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
+
       // set user confirm message
       $data['message'] = '<div class="success">De film is aangepast in de database.</div>';
       $data['title'] = 'Film aangepast';

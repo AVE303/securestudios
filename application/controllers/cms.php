@@ -374,6 +374,8 @@ class Cms extends CI_Controller {
 
     if ($this->form_validation->run('film') == FALSE) {
 
+      $data['pages'] = $this->cms_model->getAll('film', 'id', 'ASC', FALSE);
+
       $data['error'] = '1 of meer verplichte velden waren leeg!';
       // Put post values in the data array for repopulation of the form
       foreach ($_POST as $key => $value) {
@@ -384,9 +386,7 @@ class Cms extends CI_Controller {
 
       $data = array(
           'id' => $this->input->post('id'),
-          'name' => $this->input->post('name'),
           'link' => $this->input->post('link'),
-          'filmtext' => $this->input->post('filmtext'),
           'page_id' => $this->input->post('page_id'),
       );
       $projectData = new stdClass();
@@ -400,7 +400,6 @@ class Cms extends CI_Controller {
       
       // save the new record
       $id = $this->cms_model->addRecord($data, 'film');
-//echo $this->db->last_query();
 
       // set form input name="id"
       $this->form_validation->id = $id;
@@ -422,6 +421,7 @@ class Cms extends CI_Controller {
       } else {
         $data['no_result'] = '';
       }
+
       // load view and return to the list
       $this->load->view($this->tpl, $data);
     }
@@ -466,7 +466,7 @@ class Cms extends CI_Controller {
 
     // prefill form values
     $filmData = $this->cms_model->getRecord('film', $id);
-//echo $this->db->last_query();
+
     foreach ($filmData as $key => $object) {
       foreach($object as $key => $value){
         $data[$key] = $value;
@@ -484,7 +484,7 @@ class Cms extends CI_Controller {
 
     // set pages array
     $data['pages'] = $this->cms_model->getAllProjectNames();
-//echo $this->db->last_query();
+
     // setting validation rules
     $this->_set_rules();
 
@@ -499,13 +499,15 @@ class Cms extends CI_Controller {
       $id = $this->input->post('id');
       $data = array(
           'id' => $this->input->post('id'),
-          'name' => $this->input->post('name'),
           'link' => $this->input->post('link'),
           'is_parent' => 0,
           'page_id' => $this->input->post('page_id'),
       );
-
+      $name = $this->cms_model->getTitle($this->input->post('page_id'));
+      $data['name'] = $name->menu_title;
       $this->cms_model->updateRecord($id, $data, 'film');
+
+      //Get main pages and subpages
       $conditions = array('is_parent !='=> '1');
       $data['pages'] = $this->cms_model->getALL('film', 'id', 'ASC', FALSE, NULL, NULL, $conditions);
       $conditions = array('is_parent ='=> '1');

@@ -96,21 +96,21 @@ $config = array(
         ),
     ),
     'film' => array(
-        array(
-            'field' => 'name',
-            'label' => 'Film naam',
-            'rules' => 'required|trim|xxsclean'
-        ),
+//        array(
+//            'field' => 'name',
+//            'label' => 'Film naam',
+//            'rules' => 'required|trim|xxsclean'
+//        ),
         array(
             'field' => 'link',
             'label' => 'link',
             'rules' => 'trim|xxsclean'
         ),
-        array(
-            'field' => 'filmtext',
-            'label' => 'filmtext',
-            'rules' => 'trim|xxsclean'
-        ),
+//        array(
+//            'field' => 'filmtext',
+//            'label' => 'filmtext',
+//            'rules' => 'trim|xxsclean'
+//        ),
         array(
             'field' => 'page_id',
             'label' => 'page_id',
@@ -119,21 +119,17 @@ $config = array(
         
     ),
     'film_update' => array(
-       array(
-          'field' => 'name',
-          'label' => 'Film naam',
-          'rules' => 'required|trim|xxsclean'
-      ),
+//       array(
+//          'field' => 'name',
+//          'label' => 'Film naam',
+//          'rules' => 'required|trim|xxsclean'
+//      ),
        array(
             'field' => 'link',
             'label' => 'Film link',
             'rules' => 'trim|xxsclean'
         ),
-        array(
-            'field' => 'filmtext',
-            'label' => 'filmtext',
-            'rules' => 'trim|xxsclean'
-        ),
+
         array(
             'field' => 'page_id',
             'label' => 'page_id',
