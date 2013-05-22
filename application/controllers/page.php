@@ -21,7 +21,6 @@ class Page extends CI_Controller{
 
   function  Index() {
     
-
     $data = array(
         'header' => 'header',
         'main_content' => 'view_page',
@@ -70,6 +69,8 @@ class Page extends CI_Controller{
     }
 
     $data = array();
+    $data['filmdata'] = '';
+    $data['content'] = '';
 
     // Load the background image class variable
     switch ($this->uri->segment(3)) {
@@ -78,30 +79,19 @@ class Page extends CI_Controller{
       case 'contact': $data['background'] = 'contact'; break;
       default: $data['background'] = 'home'; break;
     }
-    if($this->uri->segment(3) != '' && $this->uri->segment(3) == 'projecten' ){
+
+    // Load content and film if its availible
+    if($this->uri->segment(3) != '' ){
       $permalink = $this->uri->segment(3);
       
       $data['filmdata'] = $this->page_model->get_film($permalink);
       
-    } elseif ($this->uri->segment(3) != '' && $this->uri->segment(3) == 'producten') {
-      
-      $permalink = $this->uri->segment(3);
-      $data['filmdata'] = '';
-      
-    } else {
-      $permalink = $this->uri->segment(3);
-      $data['filmdata'] = '';
+      $content = $this->page_model->get_row($permalink);
     }
-    $content = $this->page_model->get_row($permalink);
-
 
     if(!empty($content)){
       $data['content'] = $content;
-    } else {
-      $data['content'] = '';
     }
-
-
 
     // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
