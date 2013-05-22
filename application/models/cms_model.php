@@ -75,7 +75,20 @@ class Cms_model extends CI_Model{
       return false;
     }
   }
+/**
+* Get page title
+ * @param $id int the id of the record to fetch
+ * @return $title string
+*/
+  public function getPageTitle($id) {
+    $this->db->select('menu_title')->where('id =',$id);
+    $query = $this->db->get('page');
+    if($query->num_rows() > 0) {
 
+      return $query->result();
+    }
+    return false;
+  }
   /**
    * get one record
    * @param $id int the id of the record to fetch

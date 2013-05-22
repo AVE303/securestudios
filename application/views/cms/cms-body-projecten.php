@@ -18,7 +18,7 @@
           <td><h4>Hoofdpagina's</h4></td>
         </tr>
         <?php
-        if ($mainpages) {
+        if (isset($mainpages) AND !empty($mainpages)) {
           foreach ($mainpages as $page => $value) {
             if(!empty($value->link)) {
               $youtube = '<a href="http://www.youtube.com/watch?v='.$value->link.'" target="_blank">http://www.youtube.com/watch?v='.$value->link.'</a>';

@@ -31,16 +31,24 @@ class Page extends CI_Controller{
     $content = $this->page_model->get_row('home');
     $filmdata =  $this->page_model->get_film('home');
 
+    // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
 
     if(isset($mainMenu) && $mainMenu != NULL){
       foreach($mainMenu as $parent){
-        $data['submenu'][$parent->permalink] = $this->page_model->get_menu($parent->id);
+
+        $submenus[$parent->id] = $this->page_model->get_menu($parent->id);
+
       }
     }
 
-    if(!empty($mainMenu)){
-      $data['menu'] = $mainMenu;
+    foreach($mainMenu as $parent){
+      foreach($submenus as $sub => $subValue){
+        $data['menu'][$parent->permalink] = $parent;
+        if($sub == $parent->id){
+          $data['menu'][$parent->permalink]->submenu = $subValue;
+        }
+      }
     }
 
     if(!empty($content)){
@@ -94,6 +102,7 @@ class Page extends CI_Controller{
     }
 
 
+
     // Build the navigation
     $mainMenu = $this->page_model->get_menu(0);
 
@@ -128,6 +137,5 @@ class Page extends CI_Controller{
     $menu = $this->page_model->get_menu($parent);
     return $menu;
   }
-
 
 }

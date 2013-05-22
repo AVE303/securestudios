@@ -12,14 +12,9 @@ echo form_open_multipart($action, array('class' => 'edit-form'));
     </tr>
     <tr>
       <td><?php
-      if($pages == TRUE){
-        
-        foreach($pages as $film => $value){
-          $name = $value->menu_title;
-        }
-        $filmNameInput = array('name' => $name);
-        echo form_hidden($filmNameInput);
-      }
+
+        echo form_hidden($page_name[0]->menu_title);
+
       ?></td>
     </tr>
 
